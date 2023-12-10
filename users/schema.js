@@ -18,4 +18,5 @@ const schema = new mongoose.Schema(
   { collection: "users" }
 );
 
+
 export default schema;

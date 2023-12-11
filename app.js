@@ -27,7 +27,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: process.env.Netlify_URI || "http://localhost:3000",
+    origin: process.env.FRONTEND_URL
   })
 );
 
@@ -47,4 +47,4 @@ Lab5(app);
 ModuleRoutes(app);
 CourseRoutes(app);
 HelloRoutes(app);
-app.listen(4000);
+app.listen(process.env.PORT || 4000);

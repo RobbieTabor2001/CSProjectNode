@@ -12,14 +12,22 @@ import session from "express-session";
 
 import cors from "cors";
 
-mongoose.connect("mongodb://127.0.0.1:27017/kanbas-cs4550-01-fa23");
+//mongoose.connect("mongodb://127.0.0.1:27017/kanbas-cs4550-01-fa23");
+
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const atlasUri = process.env.MONGODB_URI || "mongodb://127.0.0.1:27017/kanbas-cs4550-01-fa23";
+mongoose.connect(atlasUri, { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 const app = express();
 
 app.use(
   cors({
     credentials: true,
-    origin: "http://localhost:3000",
+    origin: process.env.Netlify_URI || "http://localhost:3000",
   })
 );
 
